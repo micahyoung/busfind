@@ -1,0 +1,5 @@
+---
+applications:
+- name: busfind
+  route: busfind
+  path: target/busfind-1.0.0.jar

@@ -1,0 +1,144 @@
+{
+  "Siri": {
+    "ServiceDelivery": {
+      "ResponseTimestamp": "2017-04-29T23:16:29.556-04:00",
+      "StopMonitoringDelivery": [
+        {
+          "MonitoredStopVisit": [
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTABC_Q47",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2017-04-29",
+                  "DatedVehicleJourneyRef": "MTABC_15391903-LGPB7-LG_B7-Saturday-10"
+                },
+                "JourneyPatternRef": "MTA_Q470195",
+                "PublishedLineName": "Q47",
+                "OperatorRef": "MTABC",
+                "OriginRef": "MTA_553201",
+                "DestinationRef": "MTA_503853",
+                "DestinationName": "LAGUARDIA AIRPORT TERMINAL A",
+                "SituationRef": [],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.894284,
+                  "Latitude": 40.726594
+                },
+                "Bearing": 211.70586,
+                "ProgressRate": "normalProgress",
+                "VehicleRef": "MTABC_3599",
+                "MonitoredCall": {
+                  "ExpectedArrivalTime": "2017-04-29T23:34:35.024-04:00",
+                  "ExpectedDepartureTime": "2017-04-29T23:34:35.024-04:00",
+                  "Extensions": {
+                    "Distances": {
+                      "PresentableDistance": "2.4 miles away",
+                      "DistanceFromCall": 3785.69,
+                      "StopsFromCall": 13,
+                      "CallDistanceAlongRoute": 8071.16
+                    }
+                  },
+                  "StopPointRef": "MTA_553254",
+                  "VisitNumber": 1,
+                  "StopPointName": "74 ST/34 AV"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2017-04-29T23:16:14.000-04:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTABC_Q47",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2017-04-29",
+                  "DatedVehicleJourneyRef": "MTABC_15391904-LGPB7-LG_B7-Saturday-10"
+                },
+                "JourneyPatternRef": "MTA_Q470195",
+                "PublishedLineName": "Q47",
+                "OperatorRef": "MTABC",
+                "OriginRef": "MTA_553201",
+                "DestinationRef": "MTA_503853",
+                "DestinationName": "LAGUARDIA AIRPORT TERMINAL A",
+                "OriginAimedDepartureTime": "2017-04-29T23:30:00.000-04:00",
+                "SituationRef": [],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.871652,
+                  "Latitude": 40.713586
+                },
+                "Bearing": 277.61746,
+                "ProgressRate": "normalProgress",
+                "ProgressStatus": "prevTrip",
+                "BlockRef": "MTABC_LGPB7-LG_B7-Saturday-10_3004495",
+                "VehicleRef": "MTABC_3589",
+                "MonitoredCall": {
+                  "Extensions": {
+                    "Distances": {
+                      "PresentableDistance": "5.4 miles away",
+                      "DistanceFromCall": 8716.71,
+                      "StopsFromCall": 31,
+                      "CallDistanceAlongRoute": 8071.16
+                    }
+                  },
+                  "StopPointRef": "MTA_553254",
+                  "VisitNumber": 1,
+                  "StopPointName": "74 ST/34 AV"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2017-04-29T23:16:04.000-04:00"
+            },
+            {
+              "MonitoredVehicleJourney": {
+                "LineRef": "MTABC_Q47",
+                "DirectionRef": "0",
+                "FramedVehicleJourneyRef": {
+                  "DataFrameRef": "2017-04-29",
+                  "DatedVehicleJourneyRef": "MTABC_15391905-LGPB7-LG_B7-Saturday-10"
+                },
+                "JourneyPatternRef": "MTA_Q470195",
+                "PublishedLineName": "Q47",
+                "OperatorRef": "MTABC",
+                "OriginRef": "MTA_553201",
+                "DestinationRef": "MTA_503853",
+                "DestinationName": "LAGUARDIA AIRPORT TERMINAL A",
+                "OriginAimedDepartureTime": "2017-04-30T00:00:00.000-04:00",
+                "SituationRef": [],
+                "Monitored": true,
+                "VehicleLocation": {
+                  "Longitude": -73.890861,
+                  "Latitude": 40.749271
+                },
+                "Bearing": 280.3859,
+                "ProgressRate": "normalProgress",
+                "ProgressStatus": "prevTrip",
+                "BlockRef": "MTABC_LGPB7-LG_B7-Saturday-10_3004469",
+                "VehicleRef": "MTABC_3571",
+                "MonitoredCall": {
+                  "Extensions": {
+                    "Distances": {
+                      "PresentableDistance": "9.6 miles away",
+                      "DistanceFromCall": 15387.87,
+                      "StopsFromCall": 52,
+                      "CallDistanceAlongRoute": 8071.16
+                    }
+                  },
+                  "StopPointRef": "MTA_553254",
+                  "VisitNumber": 1,
+                  "StopPointName": "74 ST/34 AV"
+                },
+                "OnwardCalls": {}
+              },
+              "RecordedAtTime": "2017-04-29T23:16:01.000-04:00"
+            }
+          ],
+          "ResponseTimestamp": "2017-04-29T23:16:29.556-04:00",
+          "ValidUntil": "2017-04-29T23:17:29.556-04:00"
+        }
+      ],
+      "SituationExchangeDelivery": []
+    }
+  }
+}

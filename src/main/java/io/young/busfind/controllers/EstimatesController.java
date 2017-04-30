@@ -14,9 +14,8 @@ public class EstimatesController {
     private EstimatesRepository estimateRepository;
 
     @PostMapping("/")
-    public ResponseEntity<Estimate> create(String latitude, String longitude) {
-        Estimate estimate = estimateRepository.findByLatitudeAndLongitude(latitude, longitude);
+    public ResponseEntity<Estimate> create(String stationId) {
+        Estimate estimate = estimateRepository.findByStationId(stationId);
         return new ResponseEntity<>(estimate, HttpStatus.OK);
     }
-
 }
