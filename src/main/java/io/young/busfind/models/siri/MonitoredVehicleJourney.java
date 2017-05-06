@@ -1,27 +1,37 @@
 
 package io.young.busfind.models.siri;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.*;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "LineRef",
-    "DirectionRef",
-    "JourneyPatternRef",
-    "PublishedLineName",
-    "OperatorRef",
-    "OriginRef",
-    "DestinationRef",
-    "DestinationName",
-    "Monitored",
-    "Bearing",
-    "ProgressRate",
-    "BlockRef",
-    "VehicleRef",
-    "MonitoredCall"
+        "LineRef",
+        "DirectionRef",
+        "FramedVehicleJourneyRef",
+        "JourneyPatternRef",
+        "PublishedLineName",
+        "OperatorRef",
+        "OriginRef",
+        "DestinationRef",
+        "DestinationName",
+        "Monitored",
+        "Bearing",
+        "ProgressRate",
+        "BlockRef",
+        "VehicleRef",
+        "MonitoredCall"
 })
+@JsonIgnoreProperties({
+        "FramedVehicleJourneyRef",
+        "OriginAimedDepartureTime",
+        "SituationRef",
+        "VehicleLocation",
+        "ProgressStatus",
+        "OnwardCalls",
+        "ResponseTimestamp",
+        "StopMonitoringDelivery",
+})
+
 public class MonitoredVehicleJourney {
 
     @JsonProperty("LineRef")
