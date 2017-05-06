@@ -4,7 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.young.busfind.models.siri.MonitoredCall;
 import io.young.busfind.models.siri.SiriStopMonitor;
 
-import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class SiriParser {
     private ObjectMapper objectMapper;
@@ -15,12 +16,25 @@ public class SiriParser {
         this.objectMapper = new ObjectMapper();
     }
 
-    public String getExtepectedArrivalTime() {
-        return getMonitoredCall().expectedArrivalTime;
+    public LocalDateTime getExtepectedArrivalTime() {
+       String etaText = getMonitoredCall().expectedArrivalTime;
+       if (etaText != null) {
+           return LocalDateTime.parse(etaText, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+       } else {
+           return null;
+       }
     }
 
     public Double getDistance() {
         return getMonitoredCall().extensions.distances.distanceFromCall;
+    }
+
+    public int getStops() {
+        return getMonitoredCall().extensions.distances.stopsFromCall;
+    }
+
+    public boolean valid() {
+        return parseSiriStopMonitor(siriResponseJson).siri.serviceDelivery.stopMonitoringDelivery.get(0).monitoredStopVisit != null;
     }
 
     private MonitoredCall getMonitoredCall() {
@@ -32,12 +46,11 @@ public class SiriParser {
         try {
             siriStopMonitor = objectMapper.readValue(json, SiriStopMonitor.class);
         } catch (Exception e) {
-            System.out.println("Error parsing json:");;
-            System.out.println(json);;
+            System.out.println("Error parsing json:");
+            System.out.println(json);
             e.printStackTrace();
         }
         return siriStopMonitor;
     }
-
 
 }

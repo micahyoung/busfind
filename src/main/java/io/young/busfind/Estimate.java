@@ -2,14 +2,18 @@ package io.young.busfind;
 
 import lombok.Value;
 
+import java.time.LocalDateTime;
+
 @Value
 public class Estimate {
 
-    public String eta;
+    public LocalDateTime eta;
     public Double distance;
+    private int stops;
 
-    public Estimate(String eta, Double distance) {
+    public Estimate(LocalDateTime eta, int stops, Double distance) {
         this.eta = eta;
+        this.stops = stops;
         this.distance = distance;
     }
 }

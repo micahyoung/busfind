@@ -11,6 +11,9 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDateTime;
+
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -27,15 +30,13 @@ public class EstimatesControllerTests {
     EstimatesRepository estimatesRepository;
 
     @Test
-	public void post_withLocation_ReturnsEstimate() throws Exception {
-        when(estimatesRepository.findByStationId("982009")).thenReturn(new Estimate("12:05", 0.0));
+	public void post_whenEstimateFound_ReturnsEstimate() throws Exception {
+        when(estimatesRepository.findByStationId("551608")).thenReturn(new Estimate(LocalDateTime.now(), 3, 2001.26));
 
-        mockMvc.perform(post("/")
+        mockMvc.perform(post("/api/v1/webhook")
                 .contentType(MediaType.APPLICATION_JSON)
-                .param("stationId", "982009")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'eta': '12:05'}"));
+                .andExpect(content().json("{'speech': 'It will arrive in 0 minutes and is 3 stops and 2001.3 meters away.'}"));
     }
-
 }

@@ -1,0 +1,18 @@
+{
+  "Siri": {
+    "ServiceDelivery": {
+      "ResponseTimestamp": "2017-05-06T12:25:31.722-04:00",
+      "StopMonitoringDelivery": [
+        {
+          "ResponseTimestamp": "2017-05-06T12:25:31.722-04:00",
+          "ErrorCondition": {
+            "OtherError": {
+              "ErrorText": "No such stop: MTA_null."
+            },
+            "Description": "No such stop: MTA_null."
+          }
+        }
+      ]
+    }
+  }
+}
