@@ -5,13 +5,11 @@ import org.junit.Test;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.ZonedDateTime;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.fail;
 
 public abstract class EstimatesRepositoryContractTest {
@@ -22,7 +20,7 @@ public abstract class EstimatesRepositoryContractTest {
     public void EstimateRepository_findByLatitudeAndLongitude_whenSuccess_returnsEstimate() throws Exception {
         Estimate estimate = estimatesRepository.findByStationId(dataSet.validStationId());
         assertThat(estimate.distance, is(greaterThanOrEqualTo(dataSet.minExpectedDistance())));
-        assertThat(LocalDateTime.now(), is(greaterThanOrEqualTo(dataSet.minExpectedDate())));
+        assertThat(ZonedDateTime.now(), is(greaterThanOrEqualTo(dataSet.minExpectedDate())));
     }
 
     @Test
@@ -43,7 +41,7 @@ public abstract class EstimatesRepositoryContractTest {
 
         String invalidStationId();
 
-        LocalDateTime minExpectedDate();
+        ZonedDateTime minExpectedDate();
 
         Double minExpectedDistance();
     }

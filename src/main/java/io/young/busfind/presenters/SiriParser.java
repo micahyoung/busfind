@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.young.busfind.models.siri.MonitoredCall;
 import io.young.busfind.models.siri.SiriStopMonitor;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class SiriParser {
@@ -16,10 +16,10 @@ public class SiriParser {
         this.objectMapper = new ObjectMapper();
     }
 
-    public LocalDateTime getExtepectedArrivalTime() {
+    public ZonedDateTime getExtepectedArrivalTime() {
        String etaText = getMonitoredCall().expectedArrivalTime;
        if (etaText != null) {
-           return LocalDateTime.parse(etaText, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+           return ZonedDateTime.parse(etaText, DateTimeFormatter.ISO_OFFSET_DATE_TIME);
        } else {
            return null;
        }

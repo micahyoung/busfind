@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 import static org.springframework.test.web.client.ExpectedCount.once;
@@ -65,8 +65,8 @@ public class EstimatesRepositoryFakeTest extends EstimatesRepositoryContractTest
         }
 
         @Override
-        public LocalDateTime minExpectedDate() {
-            return LocalDateTime.parse("2017-04-29T23:34:35.024-04:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+        public ZonedDateTime minExpectedDate() {
+            return ZonedDateTime.parse("2017-04-29T23:34:35.024-04:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME);
         }
 
         @Override

@@ -3,6 +3,8 @@ package io.young.busfind.presenters;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 import static org.hamcrest.Matchers.*;
@@ -40,7 +42,7 @@ public class SiriParserTest {
                 "  }\n" +
                 "}\n";
         SiriParser siriParser = new SiriParser(siriJson);
-        assertThat(siriParser.getExtepectedArrivalTime(), equalTo(LocalDateTime.parse("2017-04-29T23:34:35.024-04:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME)));
+        assertThat(siriParser.getExtepectedArrivalTime(), equalTo(ZonedDateTime.parse("2017-04-29T23:34:35.024-04:00")));
         assertThat(siriParser.getDistance(), equalTo(3785.69));
         assertThat(siriParser.getStops(), equalTo(13));
         assertThat(siriParser.valid(), is(true));

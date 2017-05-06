@@ -11,9 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -31,7 +30,7 @@ public class EstimatesControllerTests {
 
     @Test
 	public void post_whenEstimateFound_ReturnsEstimate() throws Exception {
-        when(estimatesRepository.findByStationId("551608")).thenReturn(new Estimate(LocalDateTime.now(), 3, 2001.26));
+        when(estimatesRepository.findByStationId("404303")).thenReturn(new Estimate(ZonedDateTime.now(), 3, 2001.26));
 
         mockMvc.perform(post("/api/v1/webhook")
                 .contentType(MediaType.APPLICATION_JSON)

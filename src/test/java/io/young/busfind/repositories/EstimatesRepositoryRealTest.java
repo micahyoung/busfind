@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @RunWith(SpringRunner.class)
 public class EstimatesRepositoryRealTest extends EstimatesRepositoryContractTest {
@@ -40,8 +40,8 @@ public class EstimatesRepositoryRealTest extends EstimatesRepositoryContractTest
         }
 
         @Override
-        public LocalDateTime minExpectedDate() {
-            return LocalDateTime.now(); // station on busiest line;
+        public ZonedDateTime minExpectedDate() {
+            return ZonedDateTime.now(); // station on busiest line;
         }
 
         @Override
