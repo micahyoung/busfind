@@ -37,6 +37,6 @@ public class EstimatesControllerTests {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'speech': 'It will arrive in 0 minutes and is 3 stops and 2001.3 meters away.'}"));
+                .andExpect(content().json("{'speech': 'It will arrive in 0 minutes and is 3 stops and 1.2 miles away.'}"));
     }
 }
