@@ -19,7 +19,7 @@ public class EstimatesController {
     @PostMapping("/api/v1/webhook")
     public ResponseEntity<WebhookResponse> create() {
         try {
-            Estimate estimate = estimateRepository.findByStationId("404303");
+            Estimate estimate = estimateRepository.findByStationId("551608"); //404303 is busiest
             WebhookResponse webhookResponse = WebhookResponsePresenter.present(estimate);
             return new ResponseEntity<>(webhookResponse, HttpStatus.OK);
         } catch (EstimateNotFoundException e) {
