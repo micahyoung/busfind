@@ -34,6 +34,7 @@ public class EstimatesControllerTests {
 
         mockMvc.perform(post("/api/v1/webhook")
                 .contentType(MediaType.APPLICATION_JSON)
+                .content("{ \"result\": { \"parameters\": { \"stopcode\": \"551608\" }}}")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'speech': 'The Q47 bus will arrive in 0 minutes and is 3 stops and 1.2 miles away.'}"));
