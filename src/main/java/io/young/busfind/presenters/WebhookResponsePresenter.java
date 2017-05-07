@@ -17,6 +17,15 @@ public class WebhookResponsePresenter {
             estimateText = String.format("The %s bus is %d stops and %.1f miles away. No estimated time.", estimate.getLineName(), estimate.getStops(), miles);
         }
 
+        return getWebhookResponse(estimateText);
+    }
+
+    public static WebhookResponse error(String stopcode) {
+        String estimateText = String.format("Sorry, I could not find information for the stop: \"%s\"", stopcode);
+        return getWebhookResponse(estimateText);
+    }
+
+    private static WebhookResponse getWebhookResponse(String estimateText) {
         return new WebhookResponse() {{
             speech = estimateText;
             displayText = estimateText;
@@ -24,12 +33,4 @@ public class WebhookResponsePresenter {
         }};
     }
 
-    public static WebhookResponse error(String stopcode) {
-        String estimateText = String.format("Sorry, I could not find information for the stop: \"%s\"", stopcode);
-        return new WebhookResponse() {{
-            speech = estimateText;
-            displayText = estimateText;
-            source = "busfind.young.io";
-        }};
-    }
 }
