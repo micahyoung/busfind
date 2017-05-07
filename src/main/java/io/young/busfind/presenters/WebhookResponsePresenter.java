@@ -12,9 +12,9 @@ public class WebhookResponsePresenter {
         double miles = estimate.getDistance() * 0.000621371;
         if (estimate.getEta() != null) {
             long minutes = ZonedDateTime.now().until(estimate.getEta(), ChronoUnit.MINUTES);
-            estimateText = String.format("It will arrive in %d minutes and is %d stops and %.1f miles away.", minutes, estimate.getStops(), miles);
+            estimateText = String.format("The %s bus will arrive in %d minutes and is %d stops and %.1f miles away.", estimate.getLineName(), minutes, estimate.getStops(), miles);
         } else {
-            estimateText = String.format("It is %d stops and %.1f miles away. No estimated time.", estimate.getStops(), miles);
+            estimateText = String.format("The %s bus is %d stops and %.1f miles away. No estimated time.", estimate.getLineName(), estimate.getStops(), miles);
         }
 
         return new WebhookResponse() {{

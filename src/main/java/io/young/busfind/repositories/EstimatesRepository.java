@@ -20,7 +20,7 @@ public class EstimatesRepository {
 
         SiriParser siriParser = new SiriParser(jsonResponse.getBody());
         if (!siriParser.valid()) throw new EstimateNotFoundException();
-        return new Estimate(siriParser.getExtepectedArrivalTime(), siriParser.getStops(), siriParser.getDistance());
+        return new Estimate(siriParser.getExtepectedArrivalTime(), siriParser.getStops(), siriParser.getDistance(), siriParser.getLineName());
     }
 
 }

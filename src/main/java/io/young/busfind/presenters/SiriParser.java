@@ -2,14 +2,18 @@ package io.young.busfind.presenters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.young.busfind.models.siri.MonitoredCall;
+import io.young.busfind.models.siri.MonitoredStopVisit;
+import io.young.busfind.models.siri.MonitoredVehicleJourney;
 import io.young.busfind.models.siri.SiriStopMonitor;
 
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class SiriParser {
     private ObjectMapper objectMapper;
     private String siriResponseJson;
+    private String lineName;
 
     public SiriParser(String siriResponseJson) {
         this.siriResponseJson = siriResponseJson;
@@ -34,11 +38,19 @@ public class SiriParser {
     }
 
     public boolean valid() {
-        return parseSiriStopMonitor(siriResponseJson).siri.serviceDelivery.stopMonitoringDelivery.get(0).monitoredStopVisit != null;
+        return getMonitoredStopVisits() != null;
+    }
+
+    private List<MonitoredStopVisit> getMonitoredStopVisits() {
+        return parseSiriStopMonitor(siriResponseJson).siri.serviceDelivery.stopMonitoringDelivery.get(0).monitoredStopVisit;
     }
 
     private MonitoredCall getMonitoredCall() {
-        return parseSiriStopMonitor(siriResponseJson).siri.serviceDelivery.stopMonitoringDelivery.get(0).monitoredStopVisit.get(0).monitoredVehicleJourney.monitoredCall;
+        return getMonitoredVehicleJourney().monitoredCall;
+    }
+
+    private MonitoredVehicleJourney getMonitoredVehicleJourney() {
+        return getMonitoredStopVisits().get(0).monitoredVehicleJourney;
     }
 
     private SiriStopMonitor parseSiriStopMonitor(String json) {
@@ -53,4 +65,7 @@ public class SiriParser {
         return siriStopMonitor;
     }
 
+    public String getLineName() {
+        return getMonitoredVehicleJourney().publishedLineName;
+    }
 }

@@ -2,10 +2,7 @@ package io.young.busfind.presenters;
 
 import org.junit.Test;
 
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
@@ -21,6 +18,7 @@ public class SiriParserTest {
                 "          \"MonitoredStopVisit\": [\n" +
                 "            {\n" +
                 "              \"MonitoredVehicleJourney\": {\n" +
+                "                \"PublishedLineName\": \"Q47\",\n" +
                 "                \"MonitoredCall\": {\n" +
                 "                  \"ExpectedArrivalTime\": \"2017-04-29T23:34:35.024-04:00\",\n" +
                 "                  \"ExpectedDepartureTime\": \"2017-04-29T23:34:35.024-04:00\",\n" +
@@ -42,6 +40,7 @@ public class SiriParserTest {
                 "  }\n" +
                 "}\n";
         SiriParser siriParser = new SiriParser(siriJson);
+        assertThat(siriParser.getLineName(), equalTo("Q47"));
         assertThat(siriParser.getExtepectedArrivalTime(), equalTo(ZonedDateTime.parse("2017-04-29T23:34:35.024-04:00")));
         assertThat(siriParser.getDistance(), equalTo(3785.69));
         assertThat(siriParser.getStops(), equalTo(13));
@@ -58,6 +57,7 @@ public class SiriParserTest {
                 "          \"MonitoredStopVisit\": [\n" +
                 "            {\n" +
                 "              \"MonitoredVehicleJourney\": {\n" +
+                "                \"PublishedLineName\": \"Q47\",\n" +
                 "                \"MonitoredCall\": {\n" +
                 "                  \"Extensions\": {\n" +
                 "                    \"Distances\": {\n" +
@@ -76,6 +76,7 @@ public class SiriParserTest {
                 "  }\n" +
                 "}\n";
         SiriParser siriParser = new SiriParser(siriJson);
+        assertThat(siriParser.getLineName(), equalTo("Q47"));
         assertThat(siriParser.getExtepectedArrivalTime(), is(nullValue()));
         assertThat(siriParser.getDistance(), equalTo(3785.69));
         assertThat(siriParser.getStops(), equalTo(13));
@@ -83,7 +84,7 @@ public class SiriParserTest {
     }
 
     @Test
-    public void valid_withError() throws Exception {
+    public void whenError_notValid() throws Exception {
         String siriJson = "{\n" +
                 "  \"Siri\": {\n" +
                 "    \"ServiceDelivery\": {\n" +

@@ -30,12 +30,12 @@ public class EstimatesControllerTests {
 
     @Test
 	public void post_whenEstimateFound_ReturnsEstimate() throws Exception {
-        when(estimatesRepository.findByStationId("551608")).thenReturn(new Estimate(ZonedDateTime.now(), 3, 2001.26));
+        when(estimatesRepository.findByStationId("551608")).thenReturn(new Estimate(ZonedDateTime.now(), 3, 2001.26, "Q47"));
 
         mockMvc.perform(post("/api/v1/webhook")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().json("{'speech': 'It will arrive in 0 minutes and is 3 stops and 1.2 miles away.'}"));
+                .andExpect(content().json("{'speech': 'The Q47 bus will arrive in 0 minutes and is 3 stops and 1.2 miles away.'}"));
     }
 }
