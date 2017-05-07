@@ -1,6 +1,7 @@
 package io.young.busfind;
 
 import io.young.busfind.controllers.EstimatesController;
+import io.young.busfind.repositories.EstimateNotFoundException;
 import io.young.busfind.repositories.EstimatesRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,5 +39,17 @@ public class EstimatesControllerTests {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{'speech': 'The Q47 bus will arrive in 0 minutes and is 3 stops and 1.2 miles away.'}"));
+    }
+
+    @Test
+	public void post_whenEstimateNotFound_ReturnsEstimate() throws Exception {
+        when(estimatesRepository.findByStationId("foobar")).thenThrow(new EstimateNotFoundException());
+
+        mockMvc.perform(post("/api/v1/webhook")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content("{ \"result\": { \"parameters\": { \"stopcode\": \"foobar\" }}}")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(content().json("{'speech': 'Sorry, I could not find information for the stop: \"foobar\"'}"));
     }
 }

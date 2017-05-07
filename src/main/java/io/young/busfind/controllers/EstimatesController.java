@@ -30,7 +30,9 @@ public class EstimatesController {
             return new ResponseEntity<>(webhookResponse, HttpStatus.OK);
         } catch (EstimateNotFoundException e) {
             e.printStackTrace();
-            return new ResponseEntity<>(new WebhookResponse(), HttpStatus.OK);
+            WebhookResponse webhookResponse = WebhookResponsePresenter.error(stopcode);
+
+            return new ResponseEntity<>(webhookResponse, HttpStatus.NOT_FOUND);
         }
 
     }

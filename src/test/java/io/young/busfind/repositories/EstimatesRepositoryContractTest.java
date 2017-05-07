@@ -17,14 +17,14 @@ public abstract class EstimatesRepositoryContractTest {
     EstimatesRepository estimatesRepository;
 
     @Test
-    public void EstimateRepository_findByLatitudeAndLongitude_whenSuccess_returnsEstimate() throws Exception {
+    public void EstimateRepository_findByStopcode_whenSuccess_returnsEstimate() throws Exception {
         Estimate estimate = estimatesRepository.findByStationId(dataSet.validStationId());
         assertThat(estimate.distance, is(greaterThanOrEqualTo(dataSet.minExpectedDistance())));
         assertThat(ZonedDateTime.now(), is(greaterThanOrEqualTo(dataSet.minExpectedDate())));
     }
 
     @Test
-    public void EstimateRepository_findByLatitudeAndLongitude_whenSuccess_throwsException() throws Exception {
+    public void EstimateRepository_findByStopcode_whenSuccess_throwsException() throws Exception {
         try {
             estimatesRepository.findByStationId(dataSet.invalidStationId());
             fail("should have thrown");

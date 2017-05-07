@@ -23,4 +23,13 @@ public class WebhookResponsePresenter {
             source = "busfind.young.io";
         }};
     }
+
+    public static WebhookResponse error(String stopcode) {
+        String estimateText = String.format("Sorry, I could not find information for the stop: \"%s\"", stopcode);
+        return new WebhookResponse() {{
+            speech = estimateText;
+            displayText = estimateText;
+            source = "busfind.young.io";
+        }};
+    }
 }
