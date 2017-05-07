@@ -1,5 +1,7 @@
 # BusFind
 
-This is the homepage for the google action. 
+BusFind is a Google Home friendly front-end for onebusaway.org.
+
+It is currently in pre-alpha stage.
 
 Read the [Privacy policy](/privacy)
